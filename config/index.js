@@ -18,7 +18,7 @@ var config = {
   /**
    * Cluster mode
    */
-  enableCluster: false,
+  enableCluster: true,
   numCPUs: os.cpus().length,
 
   /*
@@ -27,7 +27,7 @@ var config = {
 
   registryPort: 7001,
   webPort: 7002,
-  bindingHost: '127.0.0.1', // only binding on 127.0.0.1 for local access
+  bindingHost: '192.168.1.90', // only binding on 127.0.0.1 for local access //配置仓库host
 
   // debug mode
   // if in debug mode, some middleware like limit wont load
@@ -106,8 +106,8 @@ var config = {
     // - currently supported: 'mysql', 'sqlite', 'postgres', 'mariadb'
     dialect: 'sqlite',
 
-    // custom host; default: 127.0.0.1
-    host: '127.0.0.1',
+    // custom host; default: 127.0.0.1  自定义仓库host
+    host: '192.168.1.90', 
 
     // custom port; default: 3306
     port: 3306,
@@ -131,23 +131,23 @@ var config = {
   nfs: require('fs-cnpm')({
     dir: path.join(dataDir, 'nfs')
   }),
-  // if set true, will 302 redirect to `nfs.url(dist.key)`
-  downloadRedirectToNFS: false,
+  // if set true, will 302 redirect to `nfs.url(dist.key)` //配置本地仓库地址
+  downloadRedirectToNFS: true,
 
   // registry url name
-  registryHost: 'r.cnpmjs.org',
+  registryHost: '192.168.1.90/~jenkins/nfs',
 
   /**
    * registry mode config
    */
 
-  // enable private mode or not
+  // enable private mode or not  允许私有
   // private mode: only admins can publish, other users just can sync package from source npm
   // public mode: all users can publish
-  enablePrivate: false,
+  enablePrivate: true,
 
-  // registry scopes, if don't set, means do not support scopes
-  scopes: [ '@cnpm', '@cnpmtest', '@cnpm-test' ],
+  // registry scopes, if don't set, means do not support scopes 增加自定义空间
+  scopes: [ '@cnpm', '@cnpmtest', '@cnpm-test' ,'@trs'],
 
   // some registry already have some private packages in global scope
   // but we want to treat them as scoped private packages,
@@ -200,7 +200,7 @@ var config = {
 
   // changes streaming sync
   syncChangesStream: false,
-  handleSyncRegistry: 'http://127.0.0.1:7001',
+  handleSyncRegistry: 'http://192.168.1.90:7001',  //修改registry地址
 
   // badge subject on http://shields.io/
   badgePrefixURL: 'https://img.shields.io/badge',

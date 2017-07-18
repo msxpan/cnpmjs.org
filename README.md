@@ -1,6 +1,9 @@
 cnpmjs.org
 =======
 
+## 调整部分配置和代码，搭建本地node仓库，不依赖数据库使用本地空间缓存
+
+
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
